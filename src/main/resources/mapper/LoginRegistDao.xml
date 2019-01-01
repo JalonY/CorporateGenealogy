@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射dao层LoginRegistDao接口 -->
+<mapper namespace="dao.LoginRegistDao">
+
+    <!--结果集映射用户 -->
+    <resultMap type="TUser" id="judgeLogin">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result  column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+        <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+        <result column="NICKNAME" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--验证登录 -->
+    <select id="judgeUserLogin" parameterType="TUser" resultMap="judgeLogin">
+      SELECT * FROM t_user WHERE ACCOUNT = #{account} AND PASSWORD = #{password}
+    </select>
+
+    <!--验证注册 -->
+    <select id="judgeUserRegist" parameterType="String" resultType="String">
+        SELECT ID FROM t_user WHERE ACCOUNT = #{account}
+    </select>
+
+    <!--用户注册 -->
+    <insert id="dealUserRegist" parameterType="TUser">
+        INSERT INTO t_user(ACCOUNT,PASSWORD,NICKNAME) VALUES (#{account},#{password},#{name})
+    </insert>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置 spring mvc -->
+    <!-- 1.开启springmvc注解模式 a.自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHAndlerAdapter
+        b.默认提供一系列的功能：数据绑定，数字和日期的format@NumberFormat,@DateTimeFormat c.xml,json的默认读写支持 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+
+            <!-- 统一JSON编码为UTF-8 -->
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 2.静态资源默认servlet配置 -->
+    <!-- 1).加入对静态资源的的处理：js,gif,png 2).允许使用"/"做整体映射 -->
+    <mvc:default-servlet-handler/>
+
+    <!-- 3:配置JSP 显示ViewResolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 扫描web相关的controller -->
+    <context:component-scan base-package="controller"/>
+
+    <!--200*1024*1024即200M resolveLazily属性启用是为了推迟文件解析，以便捕获文件大小异常 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="209715200"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="resolveLazily" value="true"/>
+    </bean>
+
+</beans>

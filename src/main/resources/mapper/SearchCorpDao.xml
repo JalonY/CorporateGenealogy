@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射dao层SearchCorpDao接口 -->
+<mapper namespace="dao.SearchCorpDao">
+
+    <!--结果集映射公司名称 -->
+    <resultMap type="TCorp" id="corpNameList">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <id  column="REG_NO" property="regNo" jdbcType="VARCHAR" />
+        <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+        <result column="ADMIT_MAIN" property="admitMain" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--结果集映射公司基本信息 -->
+    <resultMap type="TCorp" id="corpList">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <id column="REG_NO" property="regNo" jdbcType="VARCHAR" />
+        <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+        <result column="OPER_MAN_NAME" property="operManName" jdbcType="VARCHAR" />
+        <result column="REG_CAPI" property="regCapi" jdbcType="INTEGER" />
+        <result column="START_DATE" property="startDate" jdbcType="DATE" />
+        <result column="CORP_TEL" property="corpTel" jdbcType="VARCHAR" />
+        <result column="CORP_WEB_URL" property="corpWebUrl" jdbcType="VARCHAR" />
+        <result column="CORP_LOGO" property="corpLogo" jdbcType="VARCHAR" />
+        <result column="FARE_SCOPE" property="fareScope" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--结果集映射公司税号信息 -->
+    <resultMap type="TCorp" id="taxCorpList">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <id column="REG_NO" property="regNo" jdbcType="VARCHAR" />
+        <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+        <result column="OPER_MAN_NAME" property="operManName" jdbcType="VARCHAR" />
+        <result column="UNI_SCID" property="uniScid" jdbcType="VARCHAR" />
+        <result column="CORP_TEL" property="corpTel" jdbcType="VARCHAR" />
+        <result column="CORP_ADDR" property="corpAddr" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--结果集映射公司详细信息 -->
+    <resultMap type="TCorp" id="corpInfoList" >
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <id column="REG_NO" property="regNo" jdbcType="VARCHAR" />
+        <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+        <result column="CORP_ADDR" property="corpAddr" jdbcType="VARCHAR" />
+        <result column="BELONG_ORG" property="belongOrg" jdbcType="VARCHAR" />
+        <result column="BELONG_DIST_ORG" property="belongDistOrg" jdbcType="VARCHAR" />
+        <result column="BELONG_TRADE" property="belongTrade" jdbcType="VARCHAR" />
+        <result column="ECON_KIND" property="econKind" jdbcType="VARCHAR" />
+        <result column="ADMIT_MAIN" property="admitMain" jdbcType="VARCHAR" />
+        <result column="START_DATE" property="startDate" jdbcType="DATE" />
+        <result column="CHECK_DATE" property="checkDate" jdbcType="DATE" />
+        <result column="OPER_MAN_IDENT_NO" property="operManIdentNo" jdbcType="VARCHAR" />
+        <result column="OPER_MAN_NAME" property="operManName" jdbcType="VARCHAR" />
+        <result column="CORP_STATUS" property="corpStatus" jdbcType="VARCHAR" />
+        <result column="REG_CAPI" property="regCapi" jdbcType="INTEGER" />
+        <result column="PAID_CAPI" property="paidCapi" jdbcType="INTEGER" />
+        <result column="FARE_TERM_START" property="fareTermStart" jdbcType="DATE" />
+        <result column="FARE_TERM_END" property="fareTermEnd" jdbcType="VARCHAR" />
+        <result column="FARE_SCOPE" property="fareScope" jdbcType="VARCHAR" />
+        <result column="UNI_SCID" property="uniScid" jdbcType="VARCHAR" />
+        <result column="CORP_TEL" property="corpTel" jdbcType="VARCHAR" />
+        <result column="CORP_WEB_URL" property="corpWebUrl" jdbcType="VARCHAR" />
+        <result column="CORP_EMAIL" property="corpEmail" jdbcType="VARCHAR" />
+        <result column="CORP_LOGO" property="corpLogo" jdbcType="VARCHAR" />
+        <result column="PRAC_PERSON_NUM" property="pracPersonNum" jdbcType="VARCHAR" />
+        <result column="ORG_INST_CODE" property="orgInstCode" jdbcType="VARCHAR" />
+        <result column="TAXPAY_NUM" property="taxpayNum" jdbcType="VARCHAR" />
+        <result column="STAFF_SIZE" property="staffSize" jdbcType="VARCHAR" />
+        <result column="ENGLISH_NAME" property="englishName" jdbcType="VARCHAR" />
+        <result column="FORMER_NAME" property="formerName" jdbcType="VARCHAR" />
+        <result column="CREATE_DATE" property="createDate" jdbcType="DATE" />
+        <result column="CREATE_ORG" property="createOrg" jdbcType="INTEGER" />
+        <result column="CORP_INFO" property="corpInfo" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--结果集映射企业招聘信息-->
+    <resultMap type="TCorpRecruit" id="recruitList">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="CORP_ID" property="corpId" jdbcType="INTEGER" />
+        <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+        <result column="JOB_NAME" property="jobName" jdbcType="VARCHAR" />
+        <result column="JOB_ADDRESS" property="jobAddress" jdbcType="VARCHAR" />
+        <result column="JOB_MONEY" property="jobMoney" jdbcType="VARCHAR" />
+        <result column="PUBLIC_DATE" property="publicDate" jdbcType="DATE" />
+    </resultMap>
+
+    <!-- 结果集映射评论基本属性 -->
+    <resultMap type="TCorpEvaluate" id="corpEvalatesList">
+        <id property="id" column="ID" jdbcType="INTEGER"/>
+        <result property="corpId" column="CORP_ID" jdbcType="INTEGER"/>
+        <result property="userId" column="USER_ID" jdbcType="INTEGER"/>
+        <result property="evaluateInfo" column="EVALUATE_INFO" jdbcType="VARCHAR"/>
+        <result property="evaluateDate" column="EVALUATE_DATE" jdbcType="DATE"/>
+        <result property="goodNum" column="GOOD_NUM" jdbcType="INTEGER"/>
+        <result property="label1" column="LABEL1" jdbcType="INTEGER"/>
+        <result property="label2" column="LABEL2" jdbcType="INTEGER"/>
+        <result property="label3" column="LABEL3" jdbcType="INTEGER"/>
+        <association property="user" resultMap="judgeLogin"></association>
+    </resultMap>
+
+    <!--结果集映射用户 -->
+    <resultMap type="TUser" id="judgeLogin">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result  column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+        <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+        <result column="NICKNAME" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--结果集映射公司和公司人员-->
+    <resultMap type="TCorpCorpPertains" id="corpAndPertains">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="CORP_ID" property="corpId" jdbcType="INTEGER" />
+        <result column="PERTAINS_ID" property="pertainsId" jdbcType="INTEGER" />
+    </resultMap>
+
+    <!--结果集映射公司和股东-->
+    <resultMap type="TCorpCorpStock" id="corpAndStock">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="CORP_ID" property="corpId" jdbcType="INTEGER" />
+        <result column="STOCK_ID" property="stockId" jdbcType="INTEGER" />
+    </resultMap>
+
+    <!--结果集映射公司和分支机构-->
+    <resultMap type="TCorpCorpDist" id="corpAndDist">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="CORP_ID" property="corpId" jdbcType="INTEGER" />
+        <result column="DIST_ID" property="distId" jdbcType="INTEGER" />
+    </resultMap>
+
+
+
+    <!--结果集映射公司主要人员和公司(多对一) -->
+    <resultMap type="TCorpPertains" id="pertainsNameList">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="PERSON_TYPE" property="personType" jdbcType="VARCHAR" />
+        <result column="PERSON_NAME" property="personName" jdbcType="VARCHAR" />
+        <association property="corpCorpPertains" resultMap="corpAndPertains"></association>
+    </resultMap>
+
+    <!--结果集映射公司股东和公司(多对一) -->
+    <resultMap type="TCorpStock" id="stockNameList">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
+        <result column="STOCK_CAPI" property="stockCapi" jdbcType="DOUBLE" />
+        <result column="STOCK_TYPE" property="stockType" jdbcType="VARCHAR" />
+        <association property="corpCorpStock" resultMap="corpAndStock"></association>
+    </resultMap>
+
+    <!--结果集映射公司股东和公司(多对一) -->
+    <resultMap type="TCorpStock" id="stockPercentList">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
+        <result column="STOCK_PERCENT" property="stockPercent" jdbcType="VARCHAR" />
+        <association property="corpCorpStock" resultMap="corpAndStock"></association>
+    </resultMap>
+
+    <!--结果集映射公司分支机构和公司(多对一) -->
+    <resultMap type="TCorpDist" id="distNameList">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="DIST_NAME" property="distName" jdbcType="VARCHAR" />
+        <association property="corpCorpDist" resultMap="corpAndDist"></association>
+    </resultMap>
+
+    <!--结果集映射公司名和人员姓名 -->
+    <resultMap type="TCorp" id="corpNameByPersonNameLists">
+        <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+        <collection property="tcorppertains" resultMap="corpNameByPersonNameList"></collection>
+    </resultMap>
+
+    <!--结果集映射公司主要人员根据人员姓名 -->
+    <resultMap type="TCorpPertains" id="corpNameByPersonNameList">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="PERSON_TYPE" property="personType" jdbcType="VARCHAR" />
+        <result column="PERSON_NAME" property="personName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--结果集映射股东id-->
+    <resultMap type="TCorpStock" id="stockIdByRegNo">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+    </resultMap>
+
+
+    <!--结果集映射企业股东通过股东编号-->
+    <resultMap type="TCorpStock" id="getCorpStockByStockCertificateNoList">
+        <result column="STOCK_NAME" property="stockName" jdbcType="VARCHAR" />
+        <association property="corpCorpStock" resultMap="corpAndStock"></association>
+    </resultMap>
+
+    <!--结果集映射被投资公司所属省份和省份数量-->
+    <resultMap type="TCorp" id="stockOrgAndValue">
+        <result column="BELONG_DIST_ORG" property="belongDistOrg" jdbcType="VARCHAR" />
+        <result column="VALUE" property="value" jdbcType="VARCHAR" />
+        <result column="PAID_CAPI" property="paidCapi" jdbcType="INTEGER" />
+        <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--结果集映射用户的所有搜索历史记录-->
+    <resultMap type="TQueryHistory" id="allQueryHistory">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="USER_ACCOUNT" property="userAccount" jdbcType="VARCHAR" />
+        <result column="QUERY_CORP_NAME" property="queryCorpName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--结果集映射用户收藏的企业-->
+    <resultMap type="TCollectCorp" id="collectsId">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="CORP_ID" property="corpId" jdbcType="INTEGER" />
+    </resultMap>
+
+    <!--结果集映射用户关注的企业-->
+    <resultMap type="TAttentionCorp" id="attentionsId">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="CORP_ID" property="corpId" jdbcType="INTEGER" />
+    </resultMap>
+
+    <!--获取所有企业名称自动补全-->
+    <select id="getAllCorpName" resultMap="corpNameList">
+        SELECT ID,CORP_NAME FROM t_corp
+    </select>
+
+    <!--获取最新注册的企业-->
+    <select id="getAllNewRegCorps" resultMap="corpNameList">
+        SELECT ID,CORP_NAME
+        FROM t_corp
+        ORDER BY START_DATE DESC
+        LIMIT 28
+    </select>
+
+    <!--获取最新上市的企业-->
+    <select id="getAllNewMarCorps" resultMap="corpList">
+        SELECT ID,CORP_NAME,OPER_MAN_NAME,FARE_SCOPE
+        FROM t_corp
+        ORDER BY CHECK_DATE DESC
+        LIMIT 10
+    </select>
+
+    <!--获取最新融资的企业-->
+    <select id="getAllNewFinCorps" resultMap="corpList">
+        SELECT ID,CORP_NAME,OPER_MAN_NAME,FARE_SCOPE
+        FROM t_corp
+        ORDER BY CREATE_DATE DESC
+        LIMIT 10
+    </select>
+
+    <!--获取所有企业招聘信息-->
+    <select id="getAllCorpRecruit" resultMap="recruitList">
+        SELECT CORP_ID,CORP_NAME,JOB_NAME,JOB_ADDRESS,JOB_MONEY,PUBLIC_DATE
+        FROM t_corp_recruit
+        ORDER BY PUBLIC_DATE DESC
+    </select>
+
+    <!--根据企业名称返回信息-->
+    <select id="getCorpByName" parameterType="String" resultMap="corpList">
+        SELECT ID,REG_NO,CORP_NAME,OPER_MAN_NAME,REG_CAPI,START_DATE,CORP_TEL,CORP_WEB_URL
+        FROM t_corp
+        WHERE CORP_NAME = #{corpName}
+    </select>
+
+    <!--根据名称查询相关企业 -->
+    <select id="getListCorpByName" parameterType="String" resultMap="corpList">
+        SELECT ID,REG_NO,CORP_NAME,OPER_MAN_NAME,REG_CAPI,START_DATE,CORP_TEL,CORP_WEB_URL,CORP_LOGO
+        FROM t_corp
+        WHERE CORP_NAME LIKE CONCAT('%', #{userInput}, '%')
+    </select>
+
+    <!--根据法人/股东查询相关企业 -->
+    <select id="getListCorpByStock" parameterType="String" resultMap="corpList">
+        SELECT ID,REG_NO,CORP_NAME,OPER_MAN_NAME,REG_CAPI,START_DATE,CORP_TEL,CORP_WEB_URL,CORP_LOGO
+        FROM t_corp
+        WHERE OPER_MAN_NAME = #{userInput}
+    </select>
+
+    <!--根据高管查询相关企业 -->
+    <select id="getListCorpByManager" parameterType="String" resultMap="corpList">
+        SELECT a.ID,a.REG_NO,a.CORP_NAME,a.OPER_MAN_NAME,a.REG_CAPI,a.START_DATE,a.CORP_TEL,a.CORP_WEB_URL,a.CORP_LOGO,b.ID,c.CORP_ID,c.PERTAINS_ID
+        FROM t_corp as a,t_corp_pertains as b,t_corp_corp_pertains as c
+        WHERE b.ID = c.PERTAINS_ID AND a.ID = c.CORP_ID AND b.PERSON_NAME = #{userInput}
+    </select>
+
+    <!--根据所属行业查询相关企业 -->
+    <select id="getListCorpByIndu" parameterType="String" resultMap="corpList">
+        SELECT ID,REG_NO,CORP_NAME,OPER_MAN_NAME,REG_CAPI,START_DATE,CORP_TEL,CORP_WEB_URL,CORP_LOGO
+        FROM t_corp
+        WHERE BELONG_TRADE LIKE CONCAT('%', #{userInput}, '%')
+    </select>
+
+    <!--根据地址查询相关企业 -->
+    <select id="getListCorpByAddress" parameterType="String" resultMap="corpList">
+        SELECT ID,REG_NO,CORP_NAME,OPER_MAN_NAME,REG_CAPI,START_DATE,CORP_TEL,CORP_WEB_URL,CORP_LOGO
+        FROM t_corp
+        WHERE CORP_ADDR LIKE CONCAT('%', #{corp_address}, '%')
+    </select>
+
+    <!--根据日期查询相关企业 -->
+    <select id="getListCorpByDate" parameterType="String" resultMap="corpList">
+        SELECT ID,REG_NO,CORP_NAME,OPER_MAN_NAME,REG_CAPI,START_DATE,CORP_TEL,CORP_WEB_URL,CORP_LOGO
+        FROM t_corp
+        WHERE START_DATE BETWEEN #{new_before_date} AND #{new_after_date}
+    </select>
+
+    <!--根据企业ID查询企业详情 -->
+    <select id="getCorpInfo" parameterType="int" resultMap="corpInfoList">
+        SELECT *
+        FROM t_corp
+        WHERE ID = #{corp_id}
+    </select>
+
+    <!--税号查询企业 -->
+    <select id="getTaxCorp" parameterType="String" resultMap="taxCorpList">
+        SELECT ID,REG_NO,CORP_NAME,OPER_MAN_NAME,UNI_SCID,CORP_TEL,CORP_ADDR
+        FROM t_corp
+        WHERE CORP_NAME = #{corp_name}
+    </select>
+
+    <!--高级查询企业 -->
+    <select id="advancedSearch" parameterType="String" resultType="String">
+        SELECT ID
+        FROM t_corp
+        WHERE CORP_NAME LIKE CONCAT('%', #{top_inputName}, '%') AND CORP_ADDR LIKE CONCAT('%', #{top_inputAddress}, '%') AND
+               OPER_MAN_NAME LIKE CONCAT('%', #{top_manName}, '%') AND BELONG_TRADE LIKE CONCAT('%', #{top_inputScope}, '%')
+        LIMIT 1
+    </select>
+
+    <!--根据企业ID查询公司主要人员名称 -->
+    <select id="getCorpPertains" parameterType="int" resultMap="pertainsNameList">
+       SELECT t2.PERSON_NAME ,t2.PERSON_TYPE
+       FROM t_corp_corp_pertains t1 LEFT JOIN t_corp_pertains t2 ON t1.PERTAINS_ID = t2.ID
+       WHERE t1.CORP_ID = #{corp_id}
+    </select>
+
+    <!--根据企业ID查询公司股东名称 -->
+    <select id="getCorpStock"  parameterType="int" resultMap="stockNameList">
+       SELECT t2.STOCK_NAME,cast(t2.STOCK_CAPI/t3.PAID_CAPI*100 AS decimal(10,4)) STOCK_CAPI,t2.STOCK_TYPE
+       FROM t_corp_corp_stock t1 LEFT JOIN t_corp_stock t2 ON t1.STOCK_ID = t2.ID
+	   INNER JOIN t_corp t3 ON t1.CORP_ID = t3.ID
+       WHERE t1.CORP_ID = #{corp_id}
+    </select>
+
+    <!--获取企业股东投资比例计算实际控股人-->
+    <select id="getStockRatio"  parameterType="int" resultMap="stockPercentList">
+        SELECT t2.STOCK_NAME,t2.STOCK_CAPI/t3.PAID_CAPI*100 AS STOCK_PERCENT
+        FROM t_corp_corp_stock t1 LEFT JOIN t_corp_stock t2 ON t1.STOCK_ID = t2.ID
+        INNER JOIN t_corp t3 ON t1.CORP_ID = t3.ID
+        WHERE t1.CORP_ID = #{corp_id}
+    </select>
+
+    <!--根据企业ID查询公司分支机构名称 -->
+    <select id="getCorpDist"  parameterType="int" resultMap="distNameList">
+       SELECT t2.DIST_NAME
+       FROM t_corp_corp_dist t1 LEFT JOIN t_corp_dist t2 ON t1.DIST_ID = t2.ID
+       WHERE t1.CORP_ID = #{corp_id}
+    </select>
+
+
+    <!--根据人员姓名查询所属企业名-->
+    <select id="getCorpNameByPersonNames" parameterType="String" resultMap="corpNameByPersonNameLists">
+       SELECT t.CORP_NAME, p.PERSON_NAME,p.PERSON_TYPE
+       FROM t_corp t INNER JOIN t_corp_corp_pertains tp ON t.ID=tp.CORP_ID
+             INNER JOIN t_corp_pertains p ON tp.PERTAINS_ID=p.ID
+       WHERE p.PERSON_NAME = #{Name}
+    </select>
+
+    <!--根据公司注册号查询股东id-->
+    <select id="getStockIdByRegNo" parameterType="String" resultMap="stockIdByRegNo">
+        SELECT ID  FROM t_corp_stock WHERE CERTIFICATE_NO=#{corpRegNo}
+    </select>
+
+    <!--根据股东id查询对外投资情况-->
+    <select id="getStockCorpByStockId" parameterType="int" resultMap="stockOrgAndValue">
+        SELECT t.BELONG_DIST_ORG ,count(*) value,CORP_NAME,cast(s.STOCK_CAPI/t.PAID_CAPI*100 AS decimal(10,4)) PAID_CAPI
+        FROM t_corp t INNER JOIN t_corp_corp_stock ts ON t.ID=ts.CORP_ID
+        INNER JOIN t_corp_stock s ON ts.STOCK_ID=s.ID
+        WHERE s.ID =#{stock_id}
+    </select>
+
+    <!--根据企业分公司名查询该分公司下的公司 -->
+    <select id="getCorpDistByDistName"  parameterType="String" resultMap="distNameList">
+        SELECT t2.DIST_NAME
+        FROM t_corp_corp_dist t1 LEFT JOIN t_corp_dist t2 ON t1.DIST_ID = t2.ID
+        WHERE t1.CORP_ID IN(SELECT s1.ID
+        FROM t_corp s1
+        WHERE s1.CORP_NAME=#{distName})
+    </select>
+
+    <!--根据股东注册号关联企业查询该企业的股东-->
+    <select id="getCorpStockByStockCertificateNo" parameterType="String" resultMap="getCorpStockByStockCertificateNoList">
+        SELECT t2.STOCK_NAME
+        FROM t_corp_corp_stock t1 LEFT JOIN t_corp_stock t2 ON t1.STOCK_ID = t2.ID
+        INNER JOIN t_corp t3 ON t1.CORP_ID =t3.ID
+        WHERE t3.ID IN(SELECT s1.ID
+        FROM t_corp s1
+        WHERE s1.REG_NO=#{certificateNo})
+    </select>
+
+    <!--查询所有搜索历史记录-->
+    <select id="getAllQueryHistory" resultMap="allQueryHistory">
+        SELECT ID,USER_ACCOUNT,QUERY_CORP_NAME
+        FROM t_query_history
+    </select>
+
+    <!--补充搜索历史记录-->
+    <select id="getSomeCorpName" resultMap="corpNameList">
+        SELECT CORP_NAME
+        FROM t_corp
+        ORDER BY RAND() LIMIT #{i}
+    </select>
+
+    <!--获取当前企业点评内容-->
+    <select id="getAllCorpEvalates" parameterType="int" resultMap="corpEvalatesList">
+        SELECT *
+        FROM t_corp_evaluate a
+        INNER JOIN t_user b ON a.USER_ID = b.ID
+        WHERE a.CORP_ID = #{corpId}
+        ORDER BY a.EVALUATE_DATE DESC
+    </select>
+
+    <!--根据用户ID查询收藏企业ID -->
+    <select id="getCollectIds" parameterType="int" resultMap="collectsId">
+        SELECT CORP_ID
+        FROM t_collect_corp
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <!--根据用户ID查询关注企业ID -->
+    <select id="getAttentionIds" parameterType="int" resultMap="attentionsId">
+        SELECT CORP_ID
+        FROM t_attention_corp
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <!--根据企业ID查询收藏与关注企业信息 -->
+    <select id="getCollectAttentionCorps" parameterType="int" resultMap="corpList">
+        SELECT ID,CORP_NAME,OPER_MAN_NAME,CORP_LOGO
+        FROM t_corp
+        WHERE ID = #{corpId}
+    </select>
+
+    <!--根据用户Id与收藏企业ID删除收藏企业-->
+    <delete id="deleteCollect" parameterType="int">
+        DELETE FROM t_collect_corp WHERE USER_ID = #{userId} AND CORP_ID = #{corpId}
+    </delete>
+
+    <!--根据用户Id与关注企业ID删除关注企业-->
+    <delete id="deleteAttention" parameterType="int">
+        DELETE FROM t_attention_corp WHERE USER_ID = #{userId} AND CORP_ID = #{corpId}
+    </delete>
+
+    <!--根据用户Id与收藏企业ID添加收藏企业-->
+    <insert id="collectCorp" parameterType="TCollectCorp">
+        INSERT INTO t_collect_corp(USER_ID,CORP_ID) VALUES (#{userId},#{corpId})
+    </insert>
+
+    <!--根据用户Id与关注企业ID添加关注企业-->
+    <insert id="attentionCorp" parameterType="TAttentionCorp">
+        INSERT INTO t_attention_corp(USER_ID,CORP_ID) VALUES (#{userId},#{corpId})
+    </insert>
+
+    <!--根据用户Id与收藏企业ID添加收藏企业-->
+    <insert id="userEvaluate" parameterType="TCorpEvaluate">
+        INSERT INTO t_corp_evaluate(CORP_ID,USER_ID,EVALUATE_INFO,EVALUATE_DATE,LABEL1,LABEL2,LABEL3)
+        VALUES (#{corpId},#{userId},#{evaluateInfo},#{evaluateDate},#{label1},#{label2},#{label3})
+    </insert>
+
+    <!--根据用户账号查询是否已存在搜索记录-->
+    <select id="selectSearch" parameterType="TQueryHistory" resultType="String">
+        SELECT QUERY_CORP_NAME
+        FROM t_query_history
+        WHERE USER_ACCOUNT = #{userAccount} AND QUERY_CORP_NAME = #{queryCorpName}
+    </select>
+
+    <!--根据用户账号添加搜索记录-->
+    <insert id="addSearchHistory" parameterType="TQueryHistory">
+        INSERT INTO t_query_history(USER_ACCOUNT,QUERY_CORP_NAME) VALUES (#{userAccount},#{queryCorpName})
+    </insert>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射dao层SearchCorpDao接口 -->
+<mapper namespace="dao.SearchRelaDao">
+    <!--结果集映射公司名 -->
+    <resultMap type="TCorp" id="corpNameByOnePersonNameLists">
+        <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--结果集映射公司名 -->
+    <resultMap type="TCorp" id="CorpNameByDistNameList">
+        <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--结果集映射公司人员姓名 -->
+    <resultMap type="TCorpPertains" id="PeopleByCorpName">
+        <result column="PERSON_NAME" property="personName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--根据一个人员姓名查询所属企业名-->
+    <select id="getCorpNameByOnePersonName" parameterType="String" resultMap="corpNameByOnePersonNameLists">
+        SELECT t.CORP_NAME
+        FROM t_corp t INNER JOIN t_corp_corp_stock ts ON t.ID=ts.CORP_ID
+        INNER JOIN t_corp_stock s ON ts.STOCK_ID=s.ID
+        WHERE s.STOCK_NAME = #{onePersonName}
+    </select>
+
+    <!--根据分公司名查询公司-->
+    <select id="getCorpNameByDistName" parameterType="String" resultMap="CorpNameByDistNameList">
+        SELECT t.CORP_NAME
+        FROM t_corp t INNER JOIN t_corp_corp_dist td ON t.ID=td.CORP_ID
+        INNER JOIN t_corp_dist d ON td.DIST_ID=d.ID
+        WHERE d.DIST_NAME = #{distName}
+    </select>
+
+    <!--根据公司名查询公司人员-->
+    <select id="getPeopleByCorpName" parameterType="String" resultMap="PeopleByCorpName">
+        SELECT t.PERSON_NAME
+        FROM t_corp_pertains t
+        INNER JOIN t_corp_corp_pertains tp ON t.ID = tp.PERTAINS_ID
+        INNER JOIN t_corp c ON tp.CORP_ID = c.ID
+        WHERE c.CORP_NAME = #{corpName}
+    </select>
+
+</mapper>

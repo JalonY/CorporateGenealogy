@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.BaiduMapDao">
+
+    <!--结果集映射公司表格属性 -->
+    <resultMap type="BaiduMapCorp" id="tableCorp">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result  column="CORP_NAME" property="corpName"/>
+        <result column="CORP_ADDR" property="corpAddr" />
+        <result column="OPER_MAN_NAME" property="operManName"/>
+        <result  column="REG_CAPI" property="regCapi" />
+        <result column="BELONG_TRADE" property="belongTrade"/>
+    </resultMap>
+
+    <!--查询地图上所有企业-->
+    <select id="getAllMapCorp" resultType="BaiduMapCorp">
+        SELECT * FROM t_map_corp
+    </select>
+
+    <!--获得当前位置所有公司用于表格-->
+    <select id="getTableCorp" resultMap="tableCorp">
+        SELECT * FROM t_map_corp
+    </select>
+
+    <!--查询当前位置的所有企业-->
+    <select id="getCorpInsideMap" resultType="BaiduMapCorp">
+        SELECT * FROM t_map_corp
+        WHERE
+        longitude BETWEEN #{leftLongitude} AND #{rightLongitude}
+        AND
+        latitude BETWEEN #{rightLatitude} AND #{leftLatitude}
+    </select>
+</mapper>

@@ -1,0 +1,41 @@
+﻿.address_group {position:absolute;z-index:999999999;line-height:normal;}
+.address_title{height:38px;*width:400px; border:solid 1px #29a0d3; background:#2db2eb; color:#fff; font-size:16px; line-height:38px;text-indent:1em; font-family:黑体; position:relative;}
+.close_ico{float:right; cursor:pointer; width:14px; height:14px; background:url(../img/wt-map-img.gif) -106px 0px no-repeat;
+           position:absolute; right:20px; top:12px;}
+.address_info_main{background:#fff; padding-top:10px; padding-bottom:51px;*padding-bottom:10px;  border-left:solid 1px #e3e8ee;border-right:solid 1px #e3e8ee;*display:inline-block;*width:400px;}
+.address_txt{font-size:16px; font-family:黑体; color:#000; margin-bottom:5px;}
+.address_txt,.address_tips,.address_search,.address_remark{padding:0 19px;}
+.address_tips{color:#a4a4a4; font-size:12px;}
+.address_search,.address_remark{margin-top:5px;}
+.address_search input{width:300px;*width:275px; height:38px; line-height:40px; border: solid 1px #c0c0c0; float:left; font-size:12px; text-indent:5px; color:#999;}
+.address_search span,.address_remark span{float:left; font-family:"黑体"; font-size:16px; color:#000;  line-height:40px;}
+
+
+.input{outline:none;}
+.address_sure,.address_sure:hover{width:68px; height:31px; line-height:30px; font-size:16px; background:url(../img/wt-map-img.gif) -290px 0px;color:#fff; cursor:pointer; font-weight:bold; display:block; float:left;text-align:center; margin:10px 170px;*margin:0 170px;}
+.address_footer{height:26px; background:url(../img/wt-map-img.gif) center -112px no-repeat; display:block;width:100%;}
+.address_remark input{width:300px;*width:275px;height:40px; border:solid 1px #c0c0c0; float:left; font-size:12px; text-indent:5px;line-height:40px; }
+
+
+.hiddenOp{position:absolute; width:110px; height:50px; z-index:99999999;display:none; }
+.hiddenReturn{background:url(../img/wt-map-img.gif) 0px -59px; width:50px; height:50px; cursor:pointer; float:left;}
+.hiddenTip{background:url(../img/wt-map-img.gif) -51px -59px;width:50px; height:50px;cursor:pointer; float:right;}
+.tangram-suggestion-main{z-index:999999999;}
+.wtmap_r_tb,.wtmap_r_tb tr,.wtmap_r_tb tr td {border:0;border-collapse:collapse;} 
+.wtmap-r-ltd{white-space:nowrap;}
+#WTMap_Cover{filter: Alpha(opacity=30); -moz-opacity: 0.3; opacity: 0.3; top: 0px; background: #000;z-index: 999999;position:absolute;left:0;}
+#WTMap_Cover iframe{width:100%;height:100%;filter: Alpha(opacity=0); -moz-opacity: 0; opacity: 0;}
+#WTMap_Main{height: 630px;box-shadow: rgb(221, 219, 216) 1px 1px 1px; width: 860px; position: absolute; color: #000;  z-index: 99999999; background: #fff;overflow: hidden;}
+.wtmap_r_all{width:440px;font-size:12px;position: absolute;right: 0;line-height: 26px;overflow-y: auto;height:565px; text-align:left;}
+.wtmap_r_all table{height:100%; width:100%;}
+.wtmap_r_all table,.wtmap_r_all table tr,.wtmap_r_all table tr td{border:0; border-collapse:collapse;border-spacing:0;}
+#WTMap_Top{height: 42px;border-bottom:solid 1px #9CD3E8;font-family: 微软雅黑;font-size: 26px;color: #666;text-indent: 33px;padding-top: 15px;position:relative;z-index: 999;width: 100%; line-height:35px; text-align:left;}
+#btnWTMapSearch{width: 18px;height: 15px;position: relative;left: -65px;top: 2px;background: url(../img/wt-map-img.gif) -21px 0px;border:0;outline:medium;cursor:pointer;float: right;margin-right: 55px;margin-top:14px;*margin-top:-22px;}
+#txtWTMapSearch{border:0px;height:29px;width: 224px;font-family:宋体;font-size:14px;color:#b0b0b0;padding-left:15px; padding-bottom:0px; padding-top:0px;padding-right: 40px;outline:medium;background: url(../img/wt-map-img.gif) 0 -28px;float: right;margin-top:9px;*margin-top:-28px;line-height: 29px;margin-right: 30px;}
+#WTMap_S_Result{width:240px;position:absolute;left:495px;top:54px;border:1px solid #eeebeb;font-size:14px;text-indent:0px;background:#fff;overflow:hidden;font-family:宋体;line-height:24px;display:none;box-shadow:0 1px 1px rgba(0,0,0,0.1);text-align:center;}
+.wtmap-r-ltd a{cursor:pointer;font-size: 14px;color: #ff6600;font-weight: bold;font-family: 宋体;margin-right: 10px;margin-left:5px;}
+.wtm_r_txt{text-decoration: underline;cursor:pointer;font-family: 宋体;font-size: 12px;color: #424b50;display: inline-block;margin-right:5px;color:blue;}
+#WTMap_btnReturn{width: 62px; height: 32px; position: absolute; right: 0px; z-index: 99999999; background: url(../img/wt-map-img.gif) -290px -35px; border: 0px; cursor: pointer; background-position: initial initial; background-repeat: initial initial;}
+#WTMap_Close{width: 40px; height: 39px; background-image: url(../img/tclose_btn.png); position: absolute; z-index: 99999999; cursor: pointer;background-position: initial initial; background-repeat: initial initial; background-size:cover;}
+#WTMap_S_Result div{cursor:pointer;padding-left: 5px;text-align:left;}
+.wtmap_l_c{width:100%;float:left;}
