@@ -13,8 +13,6 @@
 
 参赛信息：http://www.cnsoftbei.com/bencandy.php?fid=42&id=1646
 
-![Image text](https://raw.githubusercontent.com/CrankZ/CorporateGenealogy/master/img-folder/info.jpg)
-
 比赛结果：http://www.cnsoftbei.com/bencandy.php?fid=42&id=1657
 
 # 使用技术
