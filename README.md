@@ -1,19 +1,5 @@
 # 千企查
 对企业信息进行族谱分析，通过企业的股东和对外投资情况，展示各家企业的关系图谱，同时计算企业的疑似控制人等等。
-# 比赛内容
-比赛：**2018中国软件杯**
-
-所选赛题：**企业信息族谱分析**
-
-小组名称：**敲打青春**
-
-比赛结果：**国家二等奖**
-
-赛题要求：http://www.cnsoftbei.com/bencandy.php?fid=151&id=1627
-
-参赛信息：http://www.cnsoftbei.com/bencandy.php?fid=42&id=1646
-
-比赛结果：http://www.cnsoftbei.com/bencandy.php?fid=42&id=1657
 
 # 使用技术
 
