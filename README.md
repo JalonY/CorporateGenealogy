@@ -1,6 +1,9 @@
 # 千企查
 对企业信息进行族谱分析，通过企业的股东和对外投资情况，展示各家企业的关系图谱，同时计算企业的疑似控制人等等。
 
+# 项目地址
+www.qianqicha.online
+
 # 使用技术
 
 **SSM**：Spring+SpringMVC+Mybatis
